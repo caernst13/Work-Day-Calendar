@@ -70,6 +70,14 @@ body {
   
   }
   
+  .clearBtn {
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: #06aed5;
+    color: white;
+    font-size: 80px;
+    font-weight: bold;
+  }
   .saveBtn i:hover {
     font-size: 20px;
     transition: all 0.3s ease-in-out;

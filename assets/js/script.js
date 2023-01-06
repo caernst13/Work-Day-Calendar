@@ -28,22 +28,13 @@ var button6 = document.getElementById("btn6")
 var button7 = document.getElementById("btn7")
 var button8 = document.getElementById("btn8")
 
-var toDo0 = '';
-var toDo1 = '';
-var toDo2 = '';
-var toDo3 = '';
-var toDo4 = '';
-var toDo5 = '';
-var toDo6 = '';
-var toDo7 = '';
-var toDo8 = '';
-
+var clearBtn = document.getElementById("clear");
 // var start = document.querySelector('.container')
+
 
 // form5.placeholder='log'
 var blocks = [hour0, hour1, hour2, hour3, hour4, hour5, hour6, hour7, hour8];
 var tasks = [form0, form1, form2, form3, form4, form5, form6, form7, form8];
-var works = [toDo0, toDo1, toDo2, toDo3, toDo4, toDo5, toDo6, toDo7, toDo8]
 
 var today=moment();
 $("#currentDay").text(today.format("MMMM Do, YYYY"));
@@ -60,8 +51,6 @@ for (let i = 0; i<9; i++) {
         blocks[i].classList.add("future")
     }
 }
-
-
 
 var log0 = function(event) {
     event.preventDefault();
@@ -108,7 +97,39 @@ var log8 = function(event) {
     job8=form8.value
     localStorage.setItem("task8", job8)
 }
+if (localStorage.getItem("task0") != null){
+    form0.placeholder=localStorage.getItem("task0")    
+}
+if (localStorage.getItem("task1") != null){
+    form1.placeholder=localStorage.getItem("task1")    
+}
+if (localStorage.getItem("task2") != null){
+    form2.placeholder=localStorage.getItem("task2")    
+}
+if (localStorage.getItem("task3") != null){
+    form3.placeholder=localStorage.getItem("task3")    
+}
+if (localStorage.getItem("task4") != null){
+    form4.placeholder=localStorage.getItem("task4")    
+}
+if (localStorage.getItem("task5") != null){
+    form5.placeholder=localStorage.getItem("task5")    
+}
+if (localStorage.getItem("task6") != null){
+    form6.placeholder=localStorage.getItem("task6")    
+}
+if (localStorage.getItem("task7") != null){
+    form7.placeholder=localStorage.getItem("task7")    
+}
+if (localStorage.getItem("task8") != null){
+    form8.placeholder=localStorage.getItem("task8")    
+}
 
+var reset = function(event) {
+    event.preventDefault();
+    localStorage.clear();
+    window.location.reload();
+}
 
 button0.addEventListener('click', log0);
 button1.addEventListener('click', log1);
@@ -120,3 +141,4 @@ button6.addEventListener('click', log6);
 button7.addEventListener('click', log7);
 button8.addEventListener('click', log8);
 
+clearBtn.addEventListener('click', reset)
