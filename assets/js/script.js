@@ -1,3 +1,4 @@
+//initallizing variables that interact with the wevsite
 var hour0 = document.getElementById("nine");
 var hour1 = document.getElementById("ten");
 var hour2 = document.getElementById("eleven");
@@ -29,19 +30,17 @@ var button7 = document.getElementById("btn7")
 var button8 = document.getElementById("btn8")
 
 var clearBtn = document.getElementById("clear");
-// var start = document.querySelector('.container')
 
-
-// form5.placeholder='log'
+//creating an array with the elements above to help streamline a little
 var blocks = [hour0, hour1, hour2, hour3, hour4, hour5, hour6, hour7, hour8];
 var tasks = [form0, form1, form2, form3, form4, form5, form6, form7, form8];
 
+//accessing moment and using it to display date
 var today=moment();
 $("#currentDay").text(today.format("MMMM Do, YYYY"));
 
-// var time = moment().hours() - 9;
-// console.log(time)
-var time = 5;
+//checks waht time it is and adjusts colors of backgrounds accordingly
+var time = moment().hours() - 9;
 for (let i = 0; i<9; i++) {
     if (time > i) {
         blocks[i].classList.add("past")
@@ -52,6 +51,7 @@ for (let i = 0; i<9; i++) {
     }
 }
 
+//stores tasks into local storage
 var log0 = function(event) {
     event.preventDefault();
     job0=form0.value
@@ -97,6 +97,8 @@ var log8 = function(event) {
     job8=form8.value
     localStorage.setItem("task8", job8)
 }
+
+//checks if there is a task in local storage and then displays if there is
 if (localStorage.getItem("task0") != null){
     form0.placeholder=localStorage.getItem("task0")    
 }
@@ -125,12 +127,14 @@ if (localStorage.getItem("task8") != null){
     form8.placeholder=localStorage.getItem("task8")    
 }
 
+//clears local storage and reloads page
 var reset = function(event) {
     event.preventDefault();
     localStorage.clear();
     window.location.reload();
 }
 
+//event listners
 button0.addEventListener('click', log0);
 button1.addEventListener('click', log1);
 button2.addEventListener('click', log2);
